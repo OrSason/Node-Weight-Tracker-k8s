@@ -5,7 +5,6 @@ pipeline {
       steps {
         sh 'curl -sL https://deb.nodesource.com/setup_15.x | sudo -E bash -'
         sh 'sudo apt-get install -y nodejs'
-        sh "sudo npm install cjs"
         
         sh 'npm init -y'
         sh 'npm install'
