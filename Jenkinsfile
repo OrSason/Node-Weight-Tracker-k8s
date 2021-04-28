@@ -6,6 +6,7 @@ pipeline {
         sh 'npm install'
       }
     }
+    /*
      stage('package'){
             steps{
               zip zipFile: "${BUILD_NUMBER}.zip", exclude: "*.zip"
@@ -13,5 +14,6 @@ pipeline {
                 archiveArtifacts artifacts: "latest.zip", followSymlinks: false
             }
         }
+        */
   }
 }
