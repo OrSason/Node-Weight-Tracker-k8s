@@ -1,6 +1,7 @@
 #getting base image
 FROM ubuntu:18.04
-
+RUN mkdir -p /home/Node-Weight-Tracker
+COPY ./home/Orsas/repos/Node-Weight-Tracker ./home/Node-Weight-Tracker  
 RUN apt-get update
 
 RUN apt -y install curl
@@ -12,5 +13,5 @@ RUN apt -y install nodejs
 #Dependencies
 RUN ls
 RUN pwd
-RUN npm install
+#RUN npm install
 CMD [ "echo","test" ]
