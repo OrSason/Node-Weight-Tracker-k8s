@@ -3,7 +3,8 @@ FROM ubuntu:18.04
 
 RUN apt-get update
 
-RUN curl -fsSL https://deb.nodesource.com/setup_15.x | sudo -E bash -
+RUN curl -sL https://deb.nodesource.com/setup_14.x -o nodesource_setup.sh
+RUN bash nodesource_setup.sh
 RUN apt install nodejs
 
 CMD [ "echo","test" ]
