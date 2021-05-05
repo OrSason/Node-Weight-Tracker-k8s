@@ -1,5 +1,5 @@
 #getting base image
-FROM node
+FROM node:16-alpine3.11
 
 #setting app location
 RUN mkdir -p /home/Node-Weight-Tracker
