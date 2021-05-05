@@ -1,19 +1,35 @@
 
-
-pipeline {  environment {
+  
+  pipeline {  environment {
     registry = "ors09/wtapp"
     registryCredential = 'dockerAc'
+    dockerImage = ''
   } 
   
   agent {label 'slave'}
-
-stages {
+  
+  stages {
     stage('Building image') {
       steps{
         script {
-          docker.build registry + ":$BUILD_NUMBER"
+          dockerImage = docker.build registry + ":$BUILD_NUMBER"
         }
       }
     }
+    stage('Deploy Image') {
+      steps{
+        script {
+          docker.withRegistry( '', registryCredential ) {
+            dockerImage.push()
+          }
+        }
+      }
+    }
+    stage('Remove Unused docker image') {
+      steps{
+        sh "docker rmi $registry:$BUILD_NUMBER"
+      }
+    }
   }
+}
 
