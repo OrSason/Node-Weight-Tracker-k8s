@@ -1,13 +1,19 @@
-pipeline {
-    agent {
-  label 'slave'
-}
 
-    stages {
-        stage('Docker Build') {
-            steps {
-                sh 'sudo docker build .'
-            }
+
+pipeline {  environment {
+    registry = "ors09/wtapp"
+    registryCredential = 'dockerAc'
+  } 
+  
+  agent {label 'slave'}
+
+stages {
+    stage('Building image') {
+      steps{
+        script {
+          docker.build registry + ":$BUILD_NUMBER"
         }
+      }
     }
+  }
 }
