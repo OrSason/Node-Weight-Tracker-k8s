@@ -9,6 +9,13 @@
   agent {label 'slave'}
   
   stages {
+  
+  stage('Fix sudo') {
+      steps {
+                sh "sudo chown root:jenkins /run/docker.sock"
+            }
+    }
+  
     stage('Building image') {
       steps{
         script {
