@@ -16,6 +16,7 @@
   
   stage('Confiuration') {
       steps{    
+        sh "chmod +x -R ${env.WORKSPACE}"
         sh('sudo ./configEnv.sh ${OKTA_ORG_URL} ${OKTA_CLIENT_ID} ${OKTA_CLIENT_SECRET}')
       }
     }
