@@ -2,9 +2,6 @@
 #!/bin/bash
 
 ip=$(curl https://ipinfo.io/ip)
-domain= $1
-clientid= $2
-secret = $3
 
 echo "# Host configuration
 PORT=8080
