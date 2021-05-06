@@ -16,7 +16,7 @@
   
   stage('Confiuration') {
       steps{    
-        sh('./configEnv.sh ${OKTA_ORG_URL} ${OKTA_CLIENT_ID} ${OKTA_CLIENT_SECRET}')
+        sh('sudo ./configEnv.sh ${OKTA_ORG_URL} ${OKTA_CLIENT_ID} ${OKTA_CLIENT_SECRET}')
       }
     }
   
