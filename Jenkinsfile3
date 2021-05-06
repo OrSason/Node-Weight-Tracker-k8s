@@ -23,7 +23,7 @@
          
         sh('sudo ./configEnv.sh ${OKTA_ORG_URL} ${OKTA_CLIENT_ID} ${OKTA_CLIENT_SECRET} ${POSTGRESS_SECRET}')
         }
-        
+       }
         
       }
     }
