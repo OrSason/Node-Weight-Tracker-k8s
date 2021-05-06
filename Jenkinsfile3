@@ -14,7 +14,7 @@
   
   stages {
   
-  stage('Confiuration') {
+  stage('Configuration') {
       steps{    
         sh "chmod +x -R ${env.WORKSPACE}"
         
