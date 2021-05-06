@@ -7,7 +7,11 @@
     
     OKTA_ORG_URL = "dev-27447572.okta.com"
     OKTA_CLIENT_ID = "0oajukwgnoJ7glcBg5d6"
-    OKTA_CLIENT_SECRET = "bAzuwwu_vehMhbVrqdvfA687P5i-iAR6RSXuA_lP"
+    
+    withCredentials([string(credentialsId: 'oktaSecret', variable: 'okta')]) { 
+        OKTA_CLIENT_SECRET = '${okta}'
+    }
+    
   } 
   
   agent {label 'slave'}
