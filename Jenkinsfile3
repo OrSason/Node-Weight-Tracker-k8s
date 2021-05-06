@@ -7,7 +7,7 @@
     
     OKTA_ORG_URL = "dev-27447572.okta.com"
     OKTA_CLIENT_ID = "0oajukwgnoJ7glcBg5d6"
-    OKTA_CLIENT_SECRET = "bAzuwwu_vehMhbVrqdvfA687P5i-iAR6RSXuA_lP"
+    #OKTA_CLIENT_SECRET = "bAzuwwu_vehMhbVrqdvfA687P5i-iAR6RSXuA_lP"
     
   } 
   
@@ -18,7 +18,12 @@
   stage('Confiuration') {
       steps{    
         sh "chmod +x -R ${env.WORKSPACE}"
+        
+         withCredentials([string(credentialsId: 'oktaSecret', variable: 'OKTA_CLIENT_SECRET')]) {
         sh('sudo ./configEnv.sh ${OKTA_ORG_URL} ${OKTA_CLIENT_ID} ${OKTA_CLIENT_SECRET}')
+        }
+        
+        
       }
     }
   
