@@ -53,7 +53,7 @@
       }
     }
     
-    stage('Remove Unused docker image') {
+    stage('Trigger cd job') {
       steps{
         build job: 'Docker-cd', propagate: true, wait: true
       }
