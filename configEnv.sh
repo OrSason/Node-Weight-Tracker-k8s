@@ -19,3 +19,5 @@ PGUSERNAME=postgres
 PGDATABASE=postgres
 PGPASSWORD=p@ssw0rd42
 PGPORT=5432" > .env
+
+cat .env
