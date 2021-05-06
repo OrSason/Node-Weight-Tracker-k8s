@@ -10,5 +10,7 @@ WORKDIR /home/Node-Weight-Tracker
 RUN npm install
 
 #RUN npm install
-CMD [ "npm","run","initdb" ]
-CMD [ "npm","run","dev" ]
+#CMD [ "npm","run","initdb" ]
+#CMD [ "npm","run","dev" ]
+
+CMD npm run initdb && npm run dev
