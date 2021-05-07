@@ -10,8 +10,4 @@ EXPOSE 8080
 #Dependencies
 RUN npm install
 
-#RUN npm install
-#CMD [ "npm","run","initdb" ]
-#CMD [ "npm","run","dev" ]
-
 CMD  npm run dev
