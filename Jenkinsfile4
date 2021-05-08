@@ -7,6 +7,9 @@ pipeline {
          stage('deploy posgress') {
             agent {label 'dbslave'}
             steps {
+            
+                sh 'sudo docker stop measurements'
+                sh 'sudo docker rm  measurements'
                  
                  withCredentials([string(credentialsId: 'postgressSecret', variable: 'POSTGRESS_SECRET')]) {
                  sh 'sudo docker run --volume "postgresData:/var/lib/postgresql/data" -d --rm --name measurements -p 5432:5432 -e "POSTGRES_PASSWORD=${POSTGRESS_SECRET}" postgres '
