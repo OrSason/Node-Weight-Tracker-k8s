@@ -38,7 +38,7 @@ pipeline {
             }
         }
         
-        stage('test container') {
+        stage('Display container') {
             steps {
               
              sh 'sudo docker ps'
