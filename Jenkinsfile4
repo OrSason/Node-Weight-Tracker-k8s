@@ -8,7 +8,7 @@ pipeline {
             agent {label 'dbslave'}
             steps {
                  withCredentials([string(credentialsId: 'postgressSecret', variable: 'POSTGRESS_SECRET')]) {
-                 sh 'sudo docker run -d -oc --name measurements -p 5432:5432 -e "POSTGRES_PASSWORD=${POSTGRESS_SECRET}" postgres --volume postgresData:/var/lib/postgresql/data'
+                 sh 'sudo docker run -d -o --name measurements -p 5432:5432 -e "POSTGRES_PASSWORD=${POSTGRESS_SECRET}" postgres --volume postgresData:/var/lib/postgresql/data'
                  }
             }
         }
