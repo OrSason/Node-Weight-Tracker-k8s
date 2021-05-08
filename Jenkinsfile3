@@ -53,7 +53,7 @@
       }
     }
     
-    stage('Trigger cd job') {
+    stage('Trigger cd2 job') {
       steps{
         build job: 'Docker-cd', propagate: true, wait: true
       }
