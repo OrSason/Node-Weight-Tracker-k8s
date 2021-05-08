@@ -1,0 +1,51 @@
+pipeline {
+    
+    agent { node { label 'webslave' } }
+
+    stages {
+        
+         stage('deploy posgress') {
+            agent {label 'dbslave'}
+            steps {
+                
+                sh 'sudo docker stop measurements'
+                sh 'sudo docker rm  measurements'
+                
+                 withCredentials([string(credentialsId: 'postgressSecret', variable: 'POSTGRESS_SECRET')]) {
+                 sh 'sudo docker run -d --name measurements -p 5432:5432 -e "POSTGRES_PASSWORD=${POSTGRESS_SECRET}" postgres'
+                 }
+            }
+        }
+        
+        
+        stage('Pull Latest') {
+            steps {
+            sh 'sudo docker pull ors09/wtapp'
+            }
+        }
+        
+        stage('Deploy container') {
+            steps {
+      
+            
+            sh 'sudo docker stop wtapp'
+            sh 'sudo docker rm  wtapp'
+            
+            
+            sh 'sudo docker run -p5432:5432 -p8080:8080 -d --name wtapp ors09/wtapp'
+            
+             sh 'sudo docker exec -i wtapp sh -c "node tools/initdb.js"'
+            }
+        }
+        
+        stage('test container') {
+            steps {
+              
+             sh 'sudo docker ps'
+            }
+        }
+        
+       
+        
+    }
+}
