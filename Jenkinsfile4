@@ -40,7 +40,8 @@ pipeline {
         
         stage('Display container') {
             steps {
-              
+             
+             sh 'sudo  docker restart wtapp'
              sh 'sudo docker ps'
             }
         }
