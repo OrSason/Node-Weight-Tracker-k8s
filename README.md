@@ -1,8 +1,15 @@
-#Docker CI 
- - Jenkinsfile3
+#Docker CI - Jenkinsfile3 : 
 
-#Docker CD
- - Jenkinsfiles4
+ - Build image of the app
+ - Push the image to DockerHub
+ - Trigger cd job
+
+#Docker CD - Jenkinsfiles4
+
+ - Deploy postgress on db slaves
+ - Pull Updated image from registry
+ - Deploy a new container with updated image
+ 
 
 -----------------------------------------------------------------------
 
