@@ -1,6 +1,6 @@
 pipeline {
     
-    agent { label 'webslave1 && webslave2'  }
+    agent { label "webslave1" && "webslave2"  }
 
     stages {
         
