@@ -12,7 +12,7 @@ pipeline {
                 sh 'sudo docker rm  measurements'
                  
                  withCredentials([string(credentialsId: 'postgressSecret', variable: 'POSTGRESS_SECRET')]) {
-                 sh 'sudo docker run --volume "postgresData:/var/lib/postgresql/data" -d --name measurements -p 5432:5432 -e "POSTGRES_PASSWORD=${POSTGRESS_SECRET}" postgres '
+                 sh 'sudo docker run --restart --volume "postgresData:/var/lib/postgresql/data" -d --name measurements -p 5432:5432 -e "POSTGRES_PASSWORD=${POSTGRESS_SECRET}" postgres '
                  }
             }
         }
