@@ -1,4 +1,4 @@
-#Docker CI - Jenkinsfile3 : 
+  #Docker CI - Jenkinsfile3 : 
 
  - Build image of the app
  - Push the image to DockerHub
