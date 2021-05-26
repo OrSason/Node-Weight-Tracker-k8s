@@ -1,3 +1,18 @@
+#Docker CI - Jenkinsfile3 : 
+
+ - Build image of the app
+ - Push the image to DockerHub
+ - Trigger cd job
+
+#Docker CD - Jenkinsfiles4
+
+ - Deploy postgress on db slaves
+ - Pull Updated image from registry
+ - Deploy a new container with updated image
+ 
+
+-----------------------------------------------------------------------
+
 # Node.js Weight Tracker
 
 ![Demo](docs/build-weight-tracker-app-demo.gif)

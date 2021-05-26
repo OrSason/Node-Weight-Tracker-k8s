@@ -1,0 +1,66 @@
+
+  
+  pipeline {  environment {
+    registry = "ors09/wtapp"
+    registryCredential = 'dockerAc'
+    dockerImage = ''
+    
+    OKTA_ORG_URL = "dev-27447572.okta.com"
+    OKTA_CLIENT_ID = "0oajukwgnoJ7glcBg5d6"
+    
+  } 
+  
+  agent {label 'slave'}
+  
+  stages {
+  
+  stage('Configuration') {
+      steps{    
+        sh "chmod +x -R ${env.WORKSPACE}"
+        
+         withCredentials([string(credentialsId: 'oktaSecret', variable: 'OKTA_CLIENT_SECRET')]) {
+         withCredentials([string(credentialsId: 'postgressSecret', variable: 'POSTGRESS_SECRET')]) {
+         
+        sh('sudo ./configEnv.sh ${OKTA_ORG_URL} ${OKTA_CLIENT_ID} ${OKTA_CLIENT_SECRET} ${POSTGRESS_SECRET}')
+        }
+       }
+        
+      }
+    }
+  
+
+    stage('Building image') {
+      steps{
+        script {
+          dockerImage = docker.build registry + ":latest"
+        }
+      }
+    }
+    
+    stage('Deploy Image') {
+      steps{
+        script {
+          docker.withRegistry( '', registryCredential ) {
+            dockerImage.push()
+          }
+        }
+      }
+    }
+   
+    stage('Remove Unused docker image') {
+      steps{
+        sh "docker rmi $registry:latest"
+      }
+    }
+    
+    stage('Trigger cd job') {
+      steps{
+        build job: 'Docker-cd2', propagate: true, wait: true
+      }
+    }
+    
+    
+  }
+  
+}
+
