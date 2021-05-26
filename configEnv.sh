@@ -6,16 +6,16 @@ echo "# Host configuration
 PORT=8080
 HOST=0.0.0.0
 NODE_ENV=development
-HOST_URL=http://40.67.252.238:8080
+HOST_URL=https://${HOST_URL}
 COOKIE_ENCRYPT_PWD=superAwesomCOOKIE_ENCRYPT_PWD=superAwesomePasswordStringThatIsAtLeast32CharactersLong!
-OKTA_ORG_URL=https://$1
-OKTA_CLIENT_ID=$2
-OKTA_CLIENT_SECRET=$3
+OKTA_ORG_URL=https://${OKTA_ORG_URL}
+OKTA_CLIENT_ID=${OKTA_CLIENT_ID}
+OKTA_CLIENT_SECRET=${OKTA_CLIENT_SECRET}
 # Postgres configuration
-PGHOST=11.0.2.10
+PGHOST=${PGHOST}
 PGUSERNAME=postgres
 PGDATABASE=postgres
-PGPASSWORD=$4
+PGPASSWORD=${PGPASSWORD}
 PGPORT=5432" > .env
 
 cat .env
