@@ -11,4 +11,4 @@ EXPOSE 8080
 RUN npm install
 
 #Deploy app
-CMD  ./configEnv.sh & npm run dev
+CMD  npm run dev
