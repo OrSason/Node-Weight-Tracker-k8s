@@ -14,19 +14,6 @@
   
   stages {
   
-  stage('Configuration') {
-      steps{    
-        sh "chmod +x -R ${env.WORKSPACE}"
-        
-         withCredentials([string(credentialsId: 'oktaSecret', variable: 'OKTA_CLIENT_SECRET')]) {
-         withCredentials([string(credentialsId: 'postgressSecret', variable: 'POSTGRESS_SECRET')]) {
-         
-        sh('sudo ./configEnv.sh ${OKTA_ORG_URL} ${OKTA_CLIENT_ID} ${OKTA_CLIENT_SECRET} ${POSTGRESS_SECRET}')
-        }
-       }
-        
-      }
-    }
   
 
     stage('Building image') {
