@@ -4,10 +4,6 @@
     registry = "ors09/wtapp2"
     registryCredential = 'dockerAc'
     dockerImage = ''
-    
-    OKTA_ORG_URL = "dev-27447572.okta.com"
-    OKTA_CLIENT_ID = "0oajukwgnoJ7glcBg5d6"
-    
   } 
   
   agent {label 'slave'}
@@ -40,7 +36,11 @@
       }
     }
     
-   
+    stage('Trigger cd job') {
+      steps{
+        build job: 'k8s-cd', propagate: true, wait: true
+      }
+    }
     
   }
   
