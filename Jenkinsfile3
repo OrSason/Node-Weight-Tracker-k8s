@@ -1,7 +1,7 @@
 
   
   pipeline {  environment {
-    registry = "ors09/wtapp"
+    registry = "ors09/wtapp2"
     registryCredential = 'dockerAc'
     dockerImage = ''
     
