@@ -1,7 +1,6 @@
 
 #!/bin/bash
 
-
 echo "# Host configuration
 PORT=8080
 HOST=0.0.0.0
