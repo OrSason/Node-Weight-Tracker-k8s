@@ -2,13 +2,13 @@
 FROM node:15-alpine
 
 #Setting app location
-RUN mkdir -p /home/Node-Weight-Tracker
-COPY . /home/Node-Weight-Tracker  
-WORKDIR /home/Node-Weight-Tracker
-EXPOSE 8080
+WORKDIR  /node-weight-tracker
+COPY package*.json ./
 
 #Dependencies
 RUN npm install
+COPY . .
 
 #Deploy app
+EXPOSE 8080
 CMD  npm run dev
