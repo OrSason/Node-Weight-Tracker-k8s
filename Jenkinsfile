@@ -19,7 +19,7 @@
       }
     }
     
-    stage('Deploy Image') {
+    stage('Push Image to registry') {
       steps{
         script {
           docker.withRegistry( '', registryCredential ) {
@@ -29,11 +29,7 @@
       }
     }
    
-    stage('Remove Unused docker image') {
-      steps{
-        sh "docker rmi $registry:latest"
-      }
-    }
+   
     
    
       stage('Trigger cd job') {
