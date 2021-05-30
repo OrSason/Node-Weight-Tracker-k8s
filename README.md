@@ -1,15 +1,12 @@
-  #Docker CI - Jenkinsfile3 : 
+  #Docker CI - Jenkinsfile : 
 
  - Build image of the app
  - Push the image to DockerHub
- - Trigger cd job
-
-#Docker CD - Jenkinsfiles4
-
- - Deploy postgress on db slaves
- - Pull Updated image from registry
- - Deploy a new container with updated image
+ - Trigger  k8s cd job at Kubernetes repo
  
+ https://github.com/OrSason/Kubernetes
+
+
 
 -----------------------------------------------------------------------
 
